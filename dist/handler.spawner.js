@@ -25,8 +25,7 @@ module.exports = {
       if (newName > -1) {
         console.log(`Spawning new harvester: ${newName}`);
       }
-    }
-    if (upgraders.length < 2) {
+    } else if (upgraders.length < 2) {
       let newName = Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE],
         undefined,
@@ -35,8 +34,7 @@ module.exports = {
       if (newName > -1) {
         console.log(`Spawning new upgrader: ${newName}`);
       }
-    }
-    if (builders.length < 2) {
+    } else if (builders.length < 2) {
       let newName = Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE],
         undefined,
