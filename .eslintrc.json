@@ -6,10 +6,20 @@
     ],
     "rules": {
         "no-console": 0,
-        "no-restricted-syntax": 0
+        "no-restricted-syntax": 0,
+        "prefer-const": 0
     },
     "globals": {
       "Game": true,
-      "Memory": true
+      "Memory": true,
+      "_": true,
+      "WORK": true,
+      "CARRY": true,
+      "MOVE": true,
+      "ATTACK": true,
+      "RANGED_ATTACK": true,
+      "HEAL": true,
+      "CLAIM": true,
+      "TOUGH": true
     }
 }
