@@ -28,9 +28,7 @@ module.exports = {
       if (newName > -1) {
         console.log(`Spawning new harvester: ${newName}`);
       }
-    }
-
-    if (upgraders.length < 2) {
+    } else if (upgraders.length < 2) {
       const newName = Game.spawns.Spawn1.createCreep(
         [Game.WORK, Game.CARRY, Game.MOVE],
         undefined,
@@ -39,9 +37,7 @@ module.exports = {
       if (newName > -1) {
         console.log(`Spawning new upgrader: ${newName}`);
       }
-    }
-
-    if (builders.length < 2) {
+    } else if (builders.length < 2) {
       const newName = Game.spawns.Spawn1.createCreep(
         [Game.WORK, Game.CARRY, Game.MOVE],
         undefined,
@@ -49,6 +45,15 @@ module.exports = {
       );
       if (newName > -1) {
         console.log(`Spawning new builder: ${newName}`);
+      }
+    }
+  },
+  // Always place this memory cleaning code at the very top of your main loop!
+  garbageCollect: function garbageCollect() {
+    for (const name in Memory.creeps) {
+      if(!Game.creeps[name]) {
+        delete Memory.creeps[name];
+        console.log('Clearing non-existing creep memory:', name);
       }
     }
   },
