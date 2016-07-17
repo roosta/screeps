@@ -1,20 +1,19 @@
-module.exports = function(grunt) {
-
+module.exports = function gruntTasks(grunt) {
   grunt.loadNpmTasks('grunt-screeps');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
-    creds: grunt.file.readJSON("credentials.json"),
+    creds: grunt.file.readJSON('credentials.json'),
     screeps: {
       options: {
-        email: "<%= creds.user %>",
-        password: "<%= creds.pass %>",
+        email: '<%= creds.user %>',
+        password: '<%= creds.pass %>',
         branch: 'default',
-        ptr: false
+        ptr: false,
       },
       dist: {
-        src: ['src/*.js']
-      }
+        src: ['src/*.js'],
+      },
     },
     watch: {
       scripts: {
@@ -26,4 +25,4 @@ module.exports = function(grunt) {
       },
     },
   });
-}
+};
