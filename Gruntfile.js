@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-screeps');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
     creds: grunt.file.readJSON("credentials.json"),
@@ -14,6 +15,15 @@ module.exports = function(grunt) {
       dist: {
         src: ['src/*.js']
       }
-    }
+    },
+    watch: {
+      scripts: {
+        files: ['src/*.js'],
+        tasks: ['screeps'],
+        options: {
+          spawn: false,
+        },
+      },
+    },
   });
 }
