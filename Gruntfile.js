@@ -12,12 +12,12 @@ module.exports = function gruntTasks(grunt) {
         ptr: false,
       },
       dist: {
-        src: ['src/*.js'],
+        src: ['dist/*.js'],
       },
     },
     watch: {
       scripts: {
-        files: ['src/*.js'],
+        files: ['dist/*.js'],
         tasks: ['screeps'],
         options: {
           spawn: false,
