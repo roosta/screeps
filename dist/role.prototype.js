@@ -3,7 +3,7 @@ let proto = {
     let closestDamagedStructure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
       filter: (structure) => structure.hits < structure.hitsMax,
     });
-    if (creep.memory.repairing && creep.carry.energy === 0) {
+    if (creep.memory.repairing && creep.carry.energy === 0 || !closestDamagedStructure) {
       creep.memory.repairing = false;
     }
     if (!creep.memory.repairing &&
