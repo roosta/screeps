@@ -1,12 +1,14 @@
-const roleHarvester  = require('./role.harvester');
-const roleUpgrader   = require('./role.upgrader');
-const roleBuilder    = require('./role.builder');
+const roleHarvester = require('./role.harvester');
+const roleUpgrader = require('./role.upgrader');
+const roleBuilder = require('./role.builder');
 const handlerSpawner = require('./handler.spawner');
 
 module.exports.loop = function main() {
   console.log('-----TICK-----');
   handlerSpawner.garbageCollect();
   handlerSpawner.run();
+
+  // console.log(handlerSpawner.getBodyCost([WORK,WORK, CARRY,CARRY, MOVE, MOVE,MOVE,MOVE]));
 
   for (let name in Game.creeps) {
     if ({}.hasOwnProperty.call(Game.creeps, name)) {
