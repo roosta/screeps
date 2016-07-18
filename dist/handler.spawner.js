@@ -6,13 +6,28 @@
  * var mod = require('handler.spawner');
  * mod.thing == 'a thing'; // true
  */
+const _ = require('lodash');
+const harvesterCount = 3;
+const upgraderCount = 3;
+const builderCount = 3;
+const bodyCost = {
+  move: 50,
+  carry: 50,
+  work: 20,
+  heal: 200,
+  tough: 20,
+  attack: 80,
+  ranged_attack: 150,
+};
 
 module.exports = {
-  run: function run() {
-    const harvesterCount = 3;
-    const upgraderCount = 3;
-    const builderCount = 3;
+  getBodyCost: function getBodyCost(parts) {
+    let cost = 0;
+    _.forEach(parts, (part) => { cost += bodyCost[part]; });
+    return cost;
+  },
 
+  run: function run() {
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader');
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder');
@@ -50,6 +65,7 @@ module.exports = {
       }
     }
   },
+
   // Always place this memory cleaning code at the very top of your main loop!
   garbageCollect: function garbageCollect() {
     for (let name in Memory.creeps) {
