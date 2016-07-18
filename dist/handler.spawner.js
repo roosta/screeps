@@ -9,14 +9,19 @@
 
 module.exports = {
   run: function run() {
+    const harvesterCount = 3;
+    const upgraderCount = 3;
+    const builderCount = 3;
+
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader');
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder');
+
     console.log(`Harvesters: ${harvesters.length}`);
     console.log(`Upgraders: ${upgraders.length}`);
     console.log(`Builders: ${builders.length}`);
 
-    if (harvesters.length < 2) {
+    if (harvesters.length < harvesterCount) {
       let newName = Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE],
         undefined,
@@ -25,7 +30,7 @@ module.exports = {
       if (newName > -1) {
         console.log(`Spawning new harvester: ${newName}`);
       }
-    } else if (upgraders.length < 2) {
+    } else if (upgraders.length < upgraderCount) {
       let newName = Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE],
         undefined,
@@ -34,7 +39,7 @@ module.exports = {
       if (newName > -1) {
         console.log(`Spawning new upgrader: ${newName}`);
       }
-    } else if (builders.length < 2) {
+    } else if (builders.length < builderCount) {
       let newName = Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE],
         undefined,
