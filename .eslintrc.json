@@ -13,7 +13,6 @@
     "globals": {
       "Game": true,
       "Memory": true,
-      "_": true,
       "WORK": true,
       "CARRY": true,
       "MOVE": true,
