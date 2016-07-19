@@ -29,6 +29,9 @@ module.exports = {
     return cost;
   },
 
+  generateId: function generateId() {
+    return Math.floor(Math.random() * (100 - 1) + 1);
+  },
   run: function run() {
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader');
@@ -41,41 +44,29 @@ module.exports = {
     console.log(`Fixers: ${fixers.length}`);
 
     if (harvesters.length < harvesterCount) {
-      let newName = Game.spawns.Spawn1.createCreep(
+      Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE, MOVE],
-        `Harvester${harvesters.length + 1}`,
+        `Harvester#${this.generateId()}`,
         { role: 'harvester' }
       );
-      if (newName) {
-        console.log(`Spawning new harvester: ${newName}`);
-      }
     } else if (upgraders.length < upgraderCount) {
-      let newName = Game.spawns.Spawn1.createCreep(
+      Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE, MOVE],
-        `Upgrader${upgraders.length + 1}`,
+        `Upgrader#${this.generateId()}`,
         { role: 'upgrader' }
       );
-      if (newName) {
-        console.log(`Spawning new upgrader: ${newName}`);
-      }
     } else if (builders.length < builderCount) {
-      let newName = Game.spawns.Spawn1.createCreep(
+      Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE, MOVE],
-        `Builder${builders.length + 1}`,
+        `Builder#${this.generateId()}`,
         { role: 'builder' }
       );
-      if (newName) {
-        console.log(`Spawning new builder: ${newName}`);
-      }
     } else if (fixers.length < fixerCount) {
-      let newName = Game.spawns.Spawn1.createCreep(
+      Game.spawns.Spawn1.createCreep(
         [WORK, CARRY, MOVE, MOVE],
-        `Fixer${fixers.length + 1}`,
+        `Fixer#${this.generateId()}`,
         { role: 'fixer' }
       );
-      if (newName) {
-        console.log(`Spawning new fixer: ${newName}`);
-      }
     }
   },
 
