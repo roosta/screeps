@@ -1,6 +1,7 @@
 const roleHarvester = require('./role.harvester');
 const roleUpgrader = require('./role.upgrader');
 const roleBuilder = require('./role.builder');
+const roleFixer = require('./role.fixer');
 const handlerSpawner = require('./handler.spawner');
 
 module.exports.loop = function main() {
@@ -22,6 +23,9 @@ module.exports.loop = function main() {
           break;
         case 'builder':
           roleBuilder.run(creep);
+          break;
+        case 'fixer':
+          roleFixer.run(creep);
           break;
         default:
           console.error(`fell through @ main. Include: ${creep.memory.role}?`);

@@ -7,9 +7,10 @@
  * mod.thing == 'a thing'; // true
  */
 const _ = require('lodash');
-const harvesterCount = 3;
-const upgraderCount = 3;
-const builderCount = 3;
+const harvesterCount = 2;
+const upgraderCount = 2;
+const builderCount = 2;
+const fixerCount = 1;
 const bodyCost = {
   move: 50,
   carry: 50,
@@ -32,37 +33,48 @@ module.exports = {
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader');
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder');
+    let fixers = _.filter(Game.creeps, (creep) => creep.memory.role === 'fixer');
 
     console.log(`Harvesters: ${harvesters.length}`);
     console.log(`Upgraders: ${upgraders.length}`);
     console.log(`Builders: ${builders.length}`);
+    console.log(`Fixers: ${fixers.length}`);
 
     if (harvesters.length < harvesterCount) {
       let newName = Game.spawns.Spawn1.createCreep(
-        [WORK, CARRY, MOVE],
-        undefined,
+        [WORK, CARRY, MOVE, MOVE],
+        `Harvester${harvesters.length + 1}`,
         { role: 'harvester' }
       );
-      if (newName > -1) {
+      if (newName) {
         console.log(`Spawning new harvester: ${newName}`);
       }
     } else if (upgraders.length < upgraderCount) {
       let newName = Game.spawns.Spawn1.createCreep(
-        [WORK, CARRY, MOVE],
-        undefined,
+        [WORK, CARRY, MOVE, MOVE],
+        `Upgrader${upgraders.length + 1}`,
         { role: 'upgrader' }
       );
-      if (newName > -1) {
+      if (newName) {
         console.log(`Spawning new upgrader: ${newName}`);
       }
     } else if (builders.length < builderCount) {
       let newName = Game.spawns.Spawn1.createCreep(
-        [WORK, CARRY, MOVE],
-        undefined,
+        [WORK, CARRY, MOVE, MOVE],
+        `Builder${builders.length + 1}`,
         { role: 'builder' }
       );
-      if (newName > -1) {
+      if (newName) {
         console.log(`Spawning new builder: ${newName}`);
+      }
+    } else if (fixers.length < fixerCount) {
+      let newName = Game.spawns.Spawn1.createCreep(
+        [WORK, CARRY, MOVE, MOVE],
+        `Fixer${fixers.length + 1}`,
+        { role: 'fixer' }
+      );
+      if (newName) {
+        console.log(`Spawning new fixer: ${newName}`);
       }
     }
   },
