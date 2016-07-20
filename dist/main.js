@@ -9,7 +9,7 @@ module.exports.loop = function main() {
   handlerSpawner.garbageCollect();
   handlerSpawner.run();
 
-  // console.log(handlerSpawner.getBodyCost([WORK,WORK, CARRY,CARRY, MOVE, MOVE,MOVE,MOVE]));
+  // console.log(handlerSpawner.getBodyCost([WORK,WORK, CARRY,CARRY, MOVE, MOVE, MOVE,MOVE]));
 
   for (let name in Game.creeps) {
     if ({}.hasOwnProperty.call(Game.creeps, name)) {

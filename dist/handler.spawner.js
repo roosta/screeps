@@ -7,9 +7,9 @@
  * mod.thing == 'a thing'; // true
  */
 const _ = require('lodash');
-const harvesterCount = 2;
-const upgraderCount = 2;
-const builderCount = 2;
+const harvesterCount = 3;
+const upgraderCount = 3;
+const builderCount = 3;
 const fixerCount = 1;
 const bodyCost = {
   move: 50,
